@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->enum('status', ['pending', 'completed', 'failed'])->default('pending');
+            $table->enum('status', ['pending', 'completed', 'failed'])->default('pending')->index();
             $table->foreignId('user_id')->constrained('Users')->cascadeOnDelete();
             $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete();
             $table->timestamps();
+            $table->index(['created_at', 'updated_at']);
         });
     }
 

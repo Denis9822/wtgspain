@@ -4,17 +4,22 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Requests\TaskRequest;
 use App\Http\Resources\TaskResource;
+use App\Http\Services\TaskService;
 use App\Models\Task;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class TasksController extends BaseController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $tasks = auth()->user()->tasks()->get();
+
+        //$tasks = auth()->user()->tasks()->get();
+
+        $tasks = TaskService::get($request);
 
         if (count($tasks)) {
             return $this->sendResponse(TaskResource::collection($tasks), 'Tasks retrieved successfully.');

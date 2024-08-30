@@ -33,4 +33,19 @@ class Task extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function scopeFilterByStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+
+    public function scopeOrderByCreatedAt($query, $direction = 'desc')
+    {
+        return $query->orderBy('created_at', $direction);
+    }
+
+    public function scopeOrderByUpdatedAt($query, $direction = 'desc')
+    {
+        return $query->orderBy('updated_at', $direction);
+    }
 }
