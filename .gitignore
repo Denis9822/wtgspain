@@ -6,6 +6,7 @@
 /storage/*.key
 /vendor
 .env
+/docker/mysql/volume
 .env.backup
 .env.production
 .phpactor.json
