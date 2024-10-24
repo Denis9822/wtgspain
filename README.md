@@ -29,7 +29,7 @@ Run migrations and seeders
   docker compose exec php php artisan migrate --seed
 ```
 
-Run server
+Run server!!
 
 ```bash
   php artisan serve
